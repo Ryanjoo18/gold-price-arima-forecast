@@ -26,8 +26,7 @@ This allows the model to generate one-step-ahead forecasts for each trading day 
 The trading strategy is based on the direction of the forecasted price movement. 
 A long position is taken when the predicted price is higher than the previous close, while a short position is taken otherwise, taking into account transaction costs of 0.5%. 
 The simulation begins with an initial capital of USD 1 mil.
-We enter the first trade with 10% of initial capital, and use that cumulative capital to trade.
-(As a simplified model, when we change position from long to short, we cash out all our shares and exit the market, then enter the market and take a short position using the same amount of cash.)
+We enter the first trade with 10% of initial capital (USD 100k), and used a fixed size (USD 100k) to trade; this is in contrast to compounding, where we let the trade size grow/shrink automatically based on the total capital.
 
 Let $\Delta p$ be the expected price change (in percentage), $t$ denote transaction cost (in percentage).
 
@@ -61,17 +60,18 @@ A long position, short position, and no position are denoted as 1, -1, 0 respect
 
 ### Backtesting Results
 
-The results of backtesting the strategy are summarised below:
+The results of backtesting the strategy are summarised below.
+We note that our strategy has outperformed the baseline buy-and-hold strategy.
 
 ![PnL chart](images/output.png)
 
 | Metric | Result |
 | --- | --- | 
-| Annualised rate of return | 28.74% |
+| Annualised rate of return | 5.59% |
 | Win rate | 57.51% |
-| Average win/loss ratio | 1.23 |
-| Profit factor | 1.85 |
-| Sharpe ratio | 2.90|
+| Average win/loss ratio | 1.27 |
+| Profit factor | 1.91 |
+| Sharpe ratio | 3.67 |
 
 ## Notes
 
